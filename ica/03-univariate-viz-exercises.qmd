@@ -27,13 +27,19 @@ head(hikes)
 ```
 
 a.  What features would we like a visualization of the *categorical* difficulty `rating` variable to capture?
+
+We would want the rating like the types of mountains on the x-axis and the rating difficulty on the y-axis which would create a visualtion based on each mountains diffculty. 
+
 b.  What about a visualization of the *quantitative* `elevation` variable?
 
+We want to put the relative height and the peak associated with the elevation variable. 
 
 
 ## Exercise 2: Load tidyverse
 
 We'll address the above questions using `ggplot` tools. Try running the following chunk and simply take note of the error message -- this is one you'll get a lot!
+
+Note: can't load the ggplot function
 
 ```{r}
 # Use the ggplot function
@@ -54,7 +60,12 @@ library(tidyverse)
 Consider some specific research questions about the difficulty `rating` of the hikes:
 
 1. How many hikes fall into each category?
+
+In the difficult category, 8 hikes under that. In the easy category, 11 hikes are easy difficulty and 26 hikes are fall under moderate level. 
+
 2. Are the hikes evenly distributed among these categories, or are some more common than others?
+
+There more common moderate hikes compared to the easy and difficult categories. 
 
 All of these questions can be answered with: (1) a **bar chart**; of (2) the *categorical* data recorded in the `rating` column. First, set up the plotting **frame**:
 
@@ -82,29 +93,40 @@ NOTE:
 ```{r}
 # COMMENT on the change in the code and the corresponding change in the plot
 ggplot(hikes, aes(x = rating)) +
-  geom_bar()
+  geom_bar() # it adds the bar graph code for the graph
 ```
+
+It adds the bar graph to the visual summary itself.
 
 ```{r}
 # COMMENT on the change in the code and the corresponding change in the plot
 ggplot(hikes, aes(x = rating)) +
   geom_bar() +
-  labs(x = "Rating", y = "Number of hikes")
+  labs(x = "Rating", y = "Number of hikes") # it adds the y-axis varibale which is the count of number 
 ```
+
+it adds the y-axis varibale which is the count of number on the visual graph. 
 
 ```{r}
 # COMMENT on the change in the code and the corresponding change in the plot
 ggplot(hikes, aes(x = rating)) +
-  geom_bar(fill = "blue") +
+  geom_bar(fill = "blue")+
   labs(x = "Rating", y = "Number of hikes")
+# It adds blue filling to the color on the bar graph. 
 ```
+
+It adds blue filling to the color on the bar graph
 
 ```{r}
 # COMMENT on the change in the code and the corresponding change in the plot
 ggplot(hikes, aes(x = rating)) +
   geom_bar(color = "orange", fill = "blue") +
   labs(x = "Rating", y = "Number of hikes")
+
+# it changes the outline of the color on bar graph to orange.
 ```
+
+it changes the outline of the color on bar graph to orange.
 
 ```{r}
 # COMMENT on the change in the code and the corresponding change in the plot
@@ -112,8 +134,10 @@ ggplot(hikes, aes(x = rating)) +
   geom_bar(color = "orange", fill = "blue")  +
   labs(x = "Rating", y = "Number of hikes") +
   theme_minimal()
-```
 
+# it makes it clean with the graph itself. 
+```
+it makes it clean with the graph itself to have better viewing. 
 
 
 ## Exercise 5: Bar Chart Follow-up
