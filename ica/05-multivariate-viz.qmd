@@ -77,7 +77,9 @@ What are the relationship trends between SAT scores and spending? Is there anyth
 Construct *one* visualization of the relationship of `sat` with `salary` *and* `expend`. HINT: Start with just 2 variables and tweak that code to add the third variable. Try out a few things!
 
 ```{r}
-
+ggplot(education, aes(y = sat, x = salary, fill = expend)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE, method = "lm")
 ```
 
 
