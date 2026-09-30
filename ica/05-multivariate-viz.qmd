@@ -77,9 +77,8 @@ What are the relationship trends between SAT scores and spending? Is there anyth
 Construct *one* visualization of the relationship of `sat` with `salary` *and* `expend`. HINT: Start with just 2 variables and tweak that code to add the third variable. Try out a few things!
 
 ```{r}
-ggplot(education, aes(y = sat, x = salary, fill = expend)) + 
-  geom_point() + 
-  geom_smooth(se = FALSE, method = "lm")
+ggplot(education, aes(y = sat, x = expend, color = salary, size = salary)) + 
+  geom_point() 
 ```
 
 
@@ -91,7 +90,7 @@ It can be tough to distinguish color scales and size scales for quantitative var
 Construct the plot below. Check out the code and think about what's happening here. What happens if you change "2" to "3"?
 
 ```{r}
-ggplot(education, aes(y = sat, x = salary, color = cut(expend, 2))) + 
+ggplot(education, aes(y = sat, x = salary, color = cut(expend, 3))) + 
   geom_point() + 
   geom_smooth(se = FALSE, method = "lm")
 ```
@@ -100,6 +99,7 @@ ggplot(education, aes(y = sat, x = salary, color = cut(expend, 2))) +
 
 Describe the trivariate relationship between `sat`, `salary`, and `expend`.
 
+> The more the spend on salary, the sat scores tend to increase as well. 
 
 ## Simpson's Paradox
 
@@ -110,6 +110,9 @@ It's strange that SAT scores *seem* to decrease with spending. But we're leaving
 Build a univariate viz of `fracCat` to better understand how many states fall into each category.
 
 ```{r}
+education |>
+  ggplot(aes(x = fracCat)) +
+  geom_bar()
 
 ```
 
@@ -118,6 +121,9 @@ Build a univariate viz of `fracCat` to better understand how many states fall in
 Build 2 bivariate visualizations that demonstrate the relationship between `sat` and `fracCat`. What story does your graphic tell and why does this make contextual sense?
 
 ```{r}
+education |>
+  ggplot(aes(y = sat, x = fracCat)) +
+  geom_point()
 
 ```
 
@@ -126,7 +132,11 @@ Build 2 bivariate visualizations that demonstrate the relationship between `sat`
 Make a trivariate visualization that demonstrates the relationship of `sat` with `expend` AND `fracCat`. Highlight the differences in `fracCat` groups through color AND unique trend lines. What story does your graphic tell?\
 Does it still seem that SAT scores decrease as spending increases?
 
+> Yes, it does
+
 ```{r}
+ggplot(education, aes(y = sat, x = expend, color = fracCat, size = fracCat)) + 
+  geom_point() 
 
 ```
 
@@ -134,7 +144,7 @@ Does it still seem that SAT scores decrease as spending increases?
 
 Putting all of this together, explain this example of **Simpson’s Paradox**. That is, why did it appear that SAT scores decrease as spending increases even though the *opposite* is true?
 
-
+> It appears like that because it shows other factors that possibly may changed that third variable like a hidden variable, distorting the data to appear that SAT Scores decreases as spending increases. Also, it could be that it could be uneven data as well.
 
 ## Heat Maps & Star Plots (Optional)
 
