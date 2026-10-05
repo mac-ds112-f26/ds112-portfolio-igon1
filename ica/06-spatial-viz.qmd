@@ -460,7 +460,7 @@ Now map `repub_pct_20` by state.
 ```{r}
 # Note where the dataset, elections_by_state, is used
 # Note where the background map, states_map, is used
-ggplot(elections_by_state, aes(map_id = state_name, fill = repub_pct_20)) +
+ ggplot(elections_by_state, aes(map_id = state_name, fill = repub_pct_20)) +
   geom_map(map = states_map) +
   expand_limits(x = states_map$long, y = states_map$lat) +
   theme_map() 
