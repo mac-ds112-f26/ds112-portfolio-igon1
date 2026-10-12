@@ -145,7 +145,7 @@ Arrange the counties in `elections_small` from lowest to highest percentage of 2
 ```{r}
  elections_small |> 
   arrange(elections_small) |>
-  head()
+  head(6)
 ```
 
 ### ✏️ Sort Descending
@@ -155,7 +155,7 @@ Arrange the counties in `elections_small` from highest to lowest percentage of 2
 ```{r}
 elections_small |> 
   arrange(desc(elections_small)) |>
-  head()
+  head(6)
 ```
 
 
@@ -193,9 +193,9 @@ elections_small |>
 ```{r}
 # You try
 # Define a variable that calculates the change in Dem support in 2020 vs 2016
-#elections_small |> 
-#  mutate(_____) |> 
-#  head()
+elections_small |>
+ mutate(dem_support_change = round(dem_pct_20 - dem_pct_16))|>
+ head()
 ```
 
 ### ✏️ Compare Dem Support
@@ -203,9 +203,9 @@ elections_small |>
 ```{r}
 # You try
 # Define a variable that determines whether the Dem support was higher in 2020 than in 2016 (TRUE/FALSE)
-#elections_small |> 
-#  mutate(_____) |> 
-#  head()
+elections_small |>
+ mutate(higher_dem_support = dem_pct_20 > dem_pct_16) |>
+ head()
 ```
 
 
@@ -221,11 +221,11 @@ BEFORE running the below chunk, what do you think it will produce?
 :::
 
 ```{r}
-# elections_small |> 
-#   filter(state_name == "Wisconsin",
-#          repub_pct_20 < dem_pct_20) |> 
-#   arrange(desc(total_votes_20)) |> 
-#   head()
+elections_small |>
+  filter(state_name == "Wisconsin",
+         repub_pct_20 < dem_pct_20) |>
+  arrange(desc(total_votes_20)) |>
+  head()
 ```
 
 ### ✏️ Swap `filter` & `arrange`
@@ -240,16 +240,19 @@ BEFORE trying, what do you think will happen if you change the order of filter a
 
 ```{r}
 # Now try it. Change the order of filter and arrange below.
-# elections_small |> 
-#   filter(state_name == "Wisconsin",
-#          repub_pct_20 < dem_pct_20) |> 
-#   arrange(desc(total_votes_20)) |> 
-#   head()
+elections_small |>
+  arrange(desc(total_votes_20)) |>
+  filter(state_name == "Wisconsin",
+         repub_pct_20 < dem_pct_20)|>
+  head()
 ```
 
 ### ✏️ Explain Filtering First
 
-Whether or not the order of `filter()` and `arrange()` changes the results, what is one *advantage* of filtering before arranging?
+Whether or not the order of `filter()` and `arrange()` changes the results, what is one *advantage* of filtering before arranging? 
+
+> it elimates the data that we don't want and it makes more easier and faster to read the data that we want. 
+
 
 ### ✏️ Predict `mutate` Pipe
 
