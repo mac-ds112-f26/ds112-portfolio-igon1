@@ -111,10 +111,7 @@ nrow(penguins)
 
 Explain why we should only use `na.omit()` in extreme circumstances.
 
-\
-\
-\
-\
+> We only use na.omit() in extreme circumstances becase it could distort the data that is provided to them with it. 
 
 ### ✏️ Drop Year & Island
 
@@ -134,6 +131,10 @@ Use a shortcut to keep everything but the year and island variables.
 
 ```{r}
 
+penguins |>
+  select(- year,- island)
+
+
 ```
 
 
@@ -142,6 +143,8 @@ Use a shortcut to keep everything but the year and island variables.
 Use a shortcut to keep only species and the penguin characteristics measured in mm.
 
 ```{r}
+penguins |>
+  select(species, ends_with("mm"))
 
 ```
 
@@ -151,6 +154,8 @@ Use a shortcut to keep only species and the penguin characteristics measured in 
 Use a shortcut to keep only species and bill-related measurements.
 
 ```{r}
+penguins |>
+  select(species, starts_with("bill"))
 
 ```
 
@@ -160,7 +165,8 @@ Use a shortcut to keep only species and bill-related measurements.
 Use a shortcut to keep only species and the length-related characteristics.
 
 ```{r}
-
+penguins |>
+  select(species, contains("length"))
 ```
 
 \
@@ -176,7 +182,7 @@ We've done examples where we need to `filter()` by more than one variable, or `s
 # Change this code to sort the penguins by species, and then island name
 # NOTE: The first row should be an Adelie penguin living on Biscoe island
 penguins |>
-  arrange(species) |> 
+  arrange(species, island) |> 
   head()
 ```
 
@@ -185,7 +191,7 @@ penguins |>
 ```{r}
 # Change this code to count the number of male/female penguins observed for each species
 penguins |>
-  count(species)
+  count(species,sex)
 ```
 
 ### ✏️ Group by 2 Variables
@@ -193,7 +199,7 @@ penguins |>
 ```{r}
 # Change this code to calculate the average body mass by species and sex
 penguins |>
-  group_by(species) |>
+  group_by(species, sex) |>
   summarize(mean = mean(body_mass_g, na.rm = TRUE))
 
 ```
