@@ -148,9 +148,9 @@ Make the data *wide* again, with each day becoming its own column.
 Adjust the code below. What don't you like about the column labels?
 
 ```{r}
-# sleep_long |>
-#   pivot_wider(names_from = ___, values_from = ___) |>
-#   head()
+sleep_long |>
+  pivot_wider(names_from = day, values_from = reaction_time) |>
+  head()
 ```
 
 ### ✏️ Name Wide Columns
@@ -158,9 +158,9 @@ Adjust the code below. What don't you like about the column labels?
 Using your intuition, adjust your code from ✏️ Pivot Wider to name the reaction time columns "day_0", "day_1", etc.
 
 ```{r}
-# sleep_long |>
-#   pivot_wider(names_from = ___, values_from = ___, names_prefix = "___") |>
-#   head()
+sleep_long |>
+  pivot_wider(names_from = day, values_from = reaction_time, names_prefix = "day_") |>
+  head()
 ```
 
 
