@@ -2,4 +2,19 @@
 title: "Personal Visualization Journey"
 ---
 
-Add content here
+```{r}
+library(tidyverse) 
+workout_log = read.csv("Workout Log.csv")
+```
+
+```{r}
+workout_log |>
+  ggplot(aes(y = Weight, x = Reps, color = Exercise)) +
+  geom_point()
+```
+
+```{r}
+workout_log |>
+  ggplot(aes(y = Weight, x = Reps)) +
+  geom_point()
+```
