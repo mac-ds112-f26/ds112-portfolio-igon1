@@ -7,14 +7,13 @@ library(tidyverse)
 workout_log = read.csv("Workout Log.csv")
 ```
 
-```{r}
-workout_log |>
-  ggplot(aes(y = Weight, x = Reps, color = Exercise)) +
-  geom_point()
-```
+
+
 
 ```{r}
 workout_log |>
-  ggplot(aes(y = Weight, x = Reps)) +
-  geom_point()
+  filter(Workout == "Ppl X Arnold (Push)") |>
+  ggplot(aes(y = Weight, x = Reps, color = Exercise )) +
+  geom_boxplot()
 ```
+
