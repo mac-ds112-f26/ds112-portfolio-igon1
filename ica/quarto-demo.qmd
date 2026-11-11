@@ -1,0 +1,126 @@
+---
+title: "My first Quarto document"
+---
+
+## Intro
+
+
+**Macalester College** is in the *Twin Cities*.
+It has:
+
+- four seasons
+- bagpipes
+- delightful students
+
+Check it out for yourself:
+
+![](https://www.macalester.edu/about/wp-content/uploads/sites/191/2019/12/campusmap336.png)
+
+
+
+
+
+## Exercise 1: Deduce Quarto features
+
+Check out the appearance and contents of this document. Thoughts?
+
+It looks pretty well-formatted, it had a very good information with it's own code chunks and the types of questions it has in document. 
+
+In the toolbar at the top of this document, **Render** the .qmd file into a .html file. Where is this file stored? Thoughts about its appearance / contents? Can you edit it?
+
+The file is stored in ICA folder and it nicely formatted with the content appearing on the website. I can edit the document from here but not the actual webpage itself. It displays the changes between them once I was able to get the changes in there. 
+
+Toggling between the .qmd and .html files, explain the purpose of the following features in the .qmd file:        
+
+`*`
+This one word to italic
+
+`**`
+This one changes the bolden the words and make it title-like
+
+`#`
+This one make a comment in the code in rchunk. 
+
+`-`
+This one makes a bullet points like little notes in the webpage.  
+
+`\`
+It creates white space in the code that trnasfer over to the html page. 
+
+`![](url)`
+it creates a weblink within the code to be usable. 
+
+
+## Exercise 2: Code
+
+How does this appear in the .qmd? The .html? So...?!
+
+It appears in the qmd as a code chunk and as well with html. So it appears in the code in the webpage. 
+
+```{r}
+seq(from = 100, to = 1000, by = 50)
+```
+
+## Exercise 3: Chunks
+
+Quarto isn't a mind reader -- we must distinguish R code from text.
+We do so by putting code inside an **R chunk**:
+
+```{r}
+seq()
+```
+
+- Put the `seq()` code in the chunk.
+- Press the green arrow in the top right of the chunk. What happens in the qmd?
+- Render. What appears in the html: R code, output, or both?
+
+It runs in the qmd and outputs an answer. 
+
+It shows the rcode chunk and the drop down of the computer itself with the output appearing in a cleaner way compared to the qmd file. 
+
+## Exercise 4: Practice
+
+- Use R code to create the following sequence: 10 10 10 10
+```{r}
+four_tens <- rep(10,4)
+sum(four_tens)
+```
+
+- Store the sequence as `four_tens`.
+
+- Use an R function (which we haven't learned!) to add up the numbers in `four_tens`.
+
+
+
+## Exercise 5: Fix this code
+
+Code is a form of communication, and the code below doesn't cut it.
+
+Put the code in a chunk and fix it.
+
+```{r}
+rep(x = 1, times = 10)
+seq(from = 100, to = 1000 , length = 20)
+num_of_students <- 27
+```
+
+## Exercise 6: Comments
+
+Run the chunk below.
+Notice that R ignores anything in a line starting with a pound sign (`#`).
+If we took the `#` away we'd get an error!
+
+```{r}
+# This is a comment
+4 + 5
+```
+
+We'll utilize this feature to **comment our code**, i.e. leave short notes about what our code is doing.
+Below, replace the `???` with an appropriate comment.
+
+```{r}
+# This chunk of code converts the temperature in celsius into fahrenheit temperature. 
+temperature_c <- 10
+temperature_f <- temperature_c * 9/5 + 32
+temperature_f
+```

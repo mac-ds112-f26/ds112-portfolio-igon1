@@ -2,4 +2,28 @@
 title: "Personal Visualization Journey"
 ---
 
-Add content here
+```{r}
+library(tidyverse) 
+workout_log = read.csv("Workout Log.csv")
+```
+
+
+
+
+```{r}
+workout_log |>
+  filter(Workout == "Ppl X Arnold (Push)") |> 
+  ggplot(aes(y = Weight, x = Reps, color = Exercise)) +
+  geom_boxplot() + 
+  labs(title = "Push Day Execrises", 
+       subtitle = "Info: it displays each Execrises reps and the amount of weight I do during this day")
+```
+```{r}
+workout_log |>
+  filter(Workout == "Ppl X Arnold (Push)") |> 
+  ggplot(aes(y = Weight, x = Reps, color = Exercise)) +
+  geom_boxplot() + 
+  facet_wrap(~ Exercise, scales = "free_y") + 
+  labs(title = "Push Day Execrises", 
+       subtitle ="it displays each Execrises reps and the amount of weight I do during this day")
+```
