@@ -22,8 +22,17 @@ workout_log |>
 workout_log |>
   filter(Workout == "Ppl X Arnold (Push)") |> 
   ggplot(aes(y = Weight, x = Reps, color = Exercise)) +
-  geom_boxplot() + 
+  geom_boxplot(width = 0.8) + 
   facet_wrap(~ Exercise, scales = "free_y") + 
   labs(title = "Push Day Execrises", 
-       subtitle ="it displays each Execrises reps and the amount of weight I do during this day")
+       subtitle ="The Spread of Weight and Reps per Execrise of a range of Two Weeks",
+       caption = "Author: Luis Gonzalez-Xochihua, Date: 11/17/26, Source: MacroFactor App",
+       x = "Reps",
+       y = "Weight (Ibs)",
+       color = "Execrise") +
+  theme_minimal() +
+  theme(
+       plot.caption = element_text(hjust = 0.5),
+       strip.text = element_blank(),
+       strip.background = element_blank())
 ```
