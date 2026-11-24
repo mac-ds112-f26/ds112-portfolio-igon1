@@ -4,10 +4,9 @@ title: "Personal Visualization Journey"
 
 ```{r}
 library(tidyverse) 
+library(lubridate)
 workout_log = read.csv("Workout Log.csv")
 ```
-
-
 
 
 ```{r}
@@ -18,21 +17,59 @@ workout_log |>
   labs(title = "Push Day Execrises", 
        subtitle = "Info: it displays each Execrises reps and the amount of weight I do during this day")
 ```
+
+
+
+
+
 ```{r}
 workout_log |>
   filter(Workout == "Ppl X Arnold (Push)") |> 
-  ggplot(aes(y = Weight, x = Reps, color = Exercise)) +
-  geom_boxplot(width = 0.8) + 
-  facet_wrap(~ Exercise, scales = "free_y") + 
-  labs(title = "Push Day Execrises", 
-       subtitle ="The Spread of Weight and Reps per Execrise of a range of Two Weeks",
-       caption = "Author: Luis Gonzalez-Xochihua, Date: 11/17/26, Source: MacroFactor App",
-       x = "Reps",
-       y = "Weight (Ibs)",
+  ggplot(aes(y = Weight, x = factor(Reps), color = Exercise)) +
+  geom_point(size = 2.5, alpha = 0.7, show.legend = FALSE) + 
+   facet_wrap(~ Exercise, scales = "free_y", labeller = label_wrap_gen(width = 20)) + 
+ labs(title = "Spread of Weight and Repetitions per Push Day Execrise over Two Weeks", 
+       subtitle = "Heavier weights usually alings with fewer repetitions across most push execrises",
+       caption = "Author: Luis Gonzalez-Xochihua | Date: 11/17/26 | Source: MacroFactor App",
+       x = "Repetitions per Set (Reps)",
+       y = "Weight (lbs)",
        color = "Execrise") +
-  theme_minimal() +
+  theme_minimal()  +
   theme(
        plot.caption = element_text(hjust = 0.5),
-       strip.text = element_blank(),
-       strip.background = element_blank())
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    strip.text = element_text(face = "bold", size = 9))
 ```
+
+
+
+```{r}
+workout_log |>
+  filter(Workout == "Ppl X Arnold (Push)") |> 
+  ggplot(aes(y = Weight, x = factor(Reps), color = Exercise)) +
+  geom_point(size = 2.5, alpha = 0.7, show.legend = FALSE) + 
+   facet_wrap(~ Exercise, scales = "free_y", labeller = label_wrap_gen(width = 20)) + 
+ labs(title = "Spread of Weight and Repetitions per Push Day Execrise (Two Weeks)", 
+       subtitle = "Heavier weights usually alings with fewer repetitions across most push execrises",
+       caption = "Author: Luis Gonzalez-Xochihua | Date: 11/17/26 | Source: MacroFactor App",
+       x = "Repetitions per Set (Reps)",
+       y = "Weight (lbs)",
+       color = "Execrise") +
+  theme_minimal()  +
+  theme(
+      plot.caption = element_text(hjust = 0.5),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    strip.text = element_text(face = "bold", size = 9))
+```
+
+
+
+
+
+
+
+
+
+
